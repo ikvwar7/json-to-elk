@@ -8,5 +8,5 @@ https://elk-docker.readthedocs.io - описание образа.
 Elasticsearch)
 
 ./docker-for-elk/Dockerfile - Dokerfile для создания образа на основе образа sebp/elk.
-    RUN rm /etc/logstash/conf.d/30-output.conf - для отмены создания индекса 
+RUN rm /etc/logstash/conf.d/30-output.conf - для отмены создания индекса 
 log-%{+YYYY.MM.dd} в Elasticsearch
