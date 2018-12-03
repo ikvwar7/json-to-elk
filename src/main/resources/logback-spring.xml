@@ -2,26 +2,18 @@
 <configuration>
     <appender name="Console"
               class="ch.qos.logback.core.ConsoleAppender">
-        <layout class="ch.qos.logback.classic.PatternLayout">
-            <Pattern>
-                <pattern>%d{HH:mm:ss:SSS}|[%thread]|%-5level|%logger{36} | %msg%rEx%n</pattern>
-            </Pattern>
-        </layout>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <timestampPattern>yyyy-MM-dd'T'HH:mm:ss.SSS</timestampPattern>
+            <fieldNames>
+                <level>log_level</level>
+                <levelValue>[ignore]</levelValue>
+                <timestamp>timestamp</timestamp>
+                <version>[ignore]</version>
+            </fieldNames>
+        </encoder>
     </appender>
-
-    <appender name="FILE"
-              class="ch.qos.logback.core.FileAppender">
-        <file>logFile.log</file>
-        <layout class="ch.qos.logback.classic.PatternLayout">
-            <Pattern>
-                %d{HH:mm:ss:SSS}|[%thread]|%-5level|%logger{36} | %msg%rEx%n
-            </Pattern>
-        </layout>
-    </appender>
-
     <root level="info">
-        <appender-ref ref="Console" />
-        <appender-ref ref="FILE" />
+        <appender-ref ref="Console"/>
     </root>
 
 </configuration>
